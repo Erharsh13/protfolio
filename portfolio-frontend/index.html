@@ -401,6 +401,109 @@ footer {
   color: #9ca3af;
 }
 
+nav {
+  justify-content: space-between;
+}
+
+.nav-brand {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+#menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: var(--text-main);
+}
+
+/* ===== MOBILE NAV ===== */
+@media (max-width: 768px) {
+  #menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+  }
+
+  .nav-links a {
+    padding: .6rem 0;
+    font-size: .95rem;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+}
+
+[data-theme="dark"] .nav-links {
+  background: #020617;
+}
+
+@media (max-width: 768px) {
+  #hero {
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+  }
+
+  .hero-text {
+    max-width: 100%;
+  }
+
+  .hero-photo img {
+    width: 150px;
+  }
+
+  .badges {
+    justify-content: center;
+  }
+}
+
+
+h1 {
+  font-size: clamp(2rem, 5vw, 2.8rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2.1rem);
+}
+
+h3 {
+  font-size: clamp(1.1rem, 3vw, 1.3rem);
+}
+
+p, li {
+  font-size: clamp(.95rem, 2.5vw, 1.05rem);
+}
+
+
+@media (max-width: 768px) {
+  .chat-input-bar {
+    flex-direction: column;
+  }
+
+  .chat-input-bar button {
+    width: 100%;
+  }
+
+  .bubble {
+    max-width: 90%;
+  }
+}
+
+
 /* ===== Skills visual restore ===== */
 .skill-visual {
   display: flex;
@@ -532,7 +635,11 @@ footer {
 <body>
 
 <nav>
-  <div class="nav-links">
+  <div class="nav-brand">Harsh</div>
+
+  <button id="menu-toggle" aria-label="Toggle menu">☰</button>
+
+  <div class="nav-links" id="nav-links">
     <a href="#hero">Home</a>
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
@@ -542,9 +649,6 @@ footer {
   </div>
 
   <button id="theme-toggle">🌙</button>
-</nav>
-
-
 </nav>
 
 <div class="bg-blobs">
@@ -825,6 +929,14 @@ function addMessage(text, sender) {
   messagesEl.appendChild(msg);
   messagesEl.scrollTop = messagesEl.scrollHeight;
 }
+
+const menuToggle = document.getElementById("menu-toggle");
+const navLinks = document.getElementById("nav-links");
+
+menuToggle.onclick = () => {
+  navLinks.classList.toggle("open");
+};
+
 
 function sendChip(text) {
   document.getElementById("question").value = text;
