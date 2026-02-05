@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- ================= SEO ================= -->
+<title>Harsh Purohit | AI Engineer & Generative AI Specialist</title>
+<meta name="description" content="AI Engineer specializing in Generative AI, LangChain, LangGraph, RAG systems, FastAPI backends, and scalable cloud-native AI platforms." />
+<meta name="keywords" content="AI Engineer, Generative AI, LangChain, LangGraph, RAG, FastAPI, Python, LLM, AWS Bedrock" />
+<meta name="author" content="Harsh Purohit" />
+<meta name="robots" content="index, follow" />
+
+<link rel="canonical" href="https://harshpurohit.ai/" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Harsh Purohit | AI Engineer & GenAI Specialist" />
+<meta property="og:description" content="Building production-grade AI systems using LLMs, RAG pipelines, and scalable backend architectures." />
+<meta property="og:image" content="assets/profile-pic.jpg" />
+<meta property="og:type" content="website" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Fonts -->
+<link href="https://fonts.cdnfonts.com/css/satoshi" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+<!-- Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Harsh Purohit",
+  "jobTitle": "AI Engineer & Generative AI Specialist",
+  "url": "https://harshpurohit.ai",
+  "sameAs": [
+    "https://www.linkedin.com/in/harshpurohit13/",
+    "https://github.com/harshpurohit13"
+  ],
+  "knowsAbout": [
+    "Generative AI",
+    "LangChain",
+    "LangGraph",
+    "Retrieval Augmented Generation",
+    "FastAPI",
+    "LLM Systems",
+    "AI Architecture"
+  ]
+}
+</script>
+
+<style>
+/* =========================================================
+   THEME VARIABLES
+========================================================= */
+:root {
+  --bg-main: #eef4fb;
+  --bg-soft: #f6f9fd;
+  --bg-card: #ffffff;
+
+  --text-main: #1f2937;
+  --text-muted: #5b6b82;
+
+  --blue: #3b82f6;
+  --indigo: #6366f1;
+  --violet: #8b5cf6;
+
+  --border: #e5ecf5;
+}
+
+/* ===== DARK MODE VARIABLES ===== */
+[data-theme="dark"] {
+  --bg-main: #020617;
+  --bg-soft: #020617;
+  --bg-card: #0f172a;
+
+  --text-main: #e5e7eb;
+  --text-muted: #9ca3af;
+
+  --border: #1f2937;
+}
+
+/* =========================================================
+   BASE
+========================================================= */
+body {
+  margin: 0;
+  font-family: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(180deg, var(--bg-main), var(--bg-soft));
+  color: var(--text-main);
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3 {
+  font-family: 'Satoshi', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+section,
+header {
+  padding: 4.5rem 1rem;
+  max-width: 1100px;
+  margin: auto;
+}
+
+h1, h2 { text-align: center; }
+h2 { margin-bottom: 2rem; }
+
+.muted { color: var(--text-muted); }
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+
+  padding: .9rem 1.2rem;
+  background: rgba(255,255,255,.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+nav a {
+  position: relative;
+  margin: 0 .9rem;
+  padding: .2rem 0;
+  color: var(--text-main);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(135deg, var(--blue), var(--indigo));
+  transition: width .25s ease;
+}
+
+nav a:hover,
+nav a.active {
+  color: var(--blue);
+}
+
+nav a:hover::after,
+nav a.active::after {
+  width: 100%;
+}
+
+/* ===== NAV DARK MODE ===== */
+[data-theme="dark"] nav {
+  background: rgba(15, 23, 42, 0.85);
+}
+
+[data-theme="dark"] nav a {
+  color: #e5e7eb;
+}
+
+/* =========================================================
+   THEME TOGGLE
+========================================================= */
+#theme-toggle {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: .35rem .6rem;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--text-main);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#theme-toggle:hover {
+  background: var(--bg-soft);
+  transform: scale(1.08);
+}
+
+[data-theme="dark"] #theme-toggle {
+  background: #020617;
+  box-shadow: 0 0 12px rgba(59,130,246,.35);
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+#hero {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+  align-items: center;
+
+  background: linear-gradient(135deg, #dbeafe, #e0e7ff);
+  border-radius: 28px;
+  padding: 4rem 3rem;
+
+  opacity: 0;
+  transform: translateY(30px);
+  animation: heroEnter 1s ease forwards;
+}
+
+[data-theme="dark"] #hero {
+  background: #020617;
+}
+
+.hero-text { max-width: 620px; }
+
+.hero-photo img {
+  width: 190px;
+  border-radius: 50%;
+  border: 6px solid white;
+}
+
+/* ===== HERO BADGES ===== */
+.badges span {
+  display: inline-block;
+  background: var(--bg-soft);
+  color: var(--indigo);
+  padding: .35rem .9rem;
+  border-radius: 999px;
+  font-size: .75rem;
+  margin: .2rem;
+}
+
+[data-theme="dark"] .badges span {
+  background: #020617;
+  color: #93c5fd;
+  border: 1px solid #1e293b;
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+.btn {
+  background: linear-gradient(135deg, var(--blue), var(--indigo));
+  color: white;
+  padding: .75rem 1.6rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn.secondary {
+  background: white;
+  color: var(--blue);
+  border: 1px solid var(--border);
+}
+
+[data-theme="dark"] .btn.secondary {
+  background: transparent;
+  color: #93c5fd;
+  border-color: #1e293b;
+}
+
+/* =========================================================
+   SKILLS
+========================================================= */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+  gap: 1.4rem;
+}
+
+.skill-card {
+  background: var(--bg-card);
+  border-radius: 18px;
+  padding: 1.6rem;
+  border: 1px solid var(--border);
+
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(99,102,241,.15);
+}
+
+/* =========================================================
+   PROJECTS
+========================================================= */
+.project-card {
+  background: var(--bg-card);
+  border-radius: 22px;
+  padding: 2.2rem;
+  margin-bottom: 2.2rem;
+  border: 1px solid var(--border);
+}
+
+/* =========================================================
+   AI ASSISTANT
+========================================================= */
+.assistant-card {
+  max-width: 780px;
+  margin: 2rem auto 0;
+  background: var(--bg-card);
+  border-radius: 22px;
+  padding: 1.4rem;
+  border: 1px solid var(--border);
+}
+
+#messages {
+  min-height: 280px;
+  padding: 1rem;
+  background: var(--bg-soft);
+  border-radius: 16px;
+  overflow-y: auto;
+}
+
+/* =========================================================
+   CONTACT
+========================================================= */
+.contact-box {
+  background: var(--bg-card);
+  border-radius: 22px;
+  padding: 2.4rem;
+  max-width: 720px;
+  margin: auto;
+  border: 1px solid var(--border);
+}
+
+.contact-box input,
+.contact-box textarea {
+  width: 100%;
+  padding: .8rem;
+  margin: .6rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  font-family: inherit;
+}
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================================
+   BACKGROUND BLOBS
+========================================================= */
+.bg-blobs {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.bg-blobs span {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(99,102,241,.35), transparent 70%);
+  filter: blur(80px);
+  animation: float 16s infinite alternate ease-in-out;
+}
+
+[data-theme="dark"] .bg-blobs {
+  display: none;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+footer {
+  background: linear-gradient(135deg, #e0e7ff, #cffafe);
+  text-align: center;
+  padding: 2rem;
+  margin-top: 4rem;
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] footer {
+  background: #020617;
+  color: #9ca3af;
+}
+
+/* ===== Skills visual restore ===== */
+.skill-visual {
+  display: flex;
+  flex-direction: column;
+}
+
+.skill-header {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  margin-bottom: .6rem;
+}
+
+.skill-header img {
+  width: 36px;
+  height: 36px;
+  opacity: .9;
+}
+
+.skill-card ul {
+  padding-left: 1.1rem;
+  line-height: 1.6;
+  margin: .4rem 0;
+}
+
+.skill-foot {
+  margin-top: .8rem;
+  font-size: .75rem;
+  color: var(--text-muted);
+}
+
+/* Dark mode skill text */
+[data-theme="dark"] .skill-card ul li {
+  color: #e5e7eb;
+}
+
+/* ===== AI Assistant restore ===== */
+#messages {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+}
+
+.message {
+  display: flex;
+  margin: .6rem 0;
+}
+
+.message.bot {
+  justify-content: flex-start;
+}
+
+.message.user {
+  justify-content: flex-end;
+}
+
+.bubble {
+  padding: .75rem 1rem;
+  border-radius: 14px;
+  max-width: 75%;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+/* Bot bubble */
+.message.bot .bubble {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+}
+
+/* User bubble */
+.message.user .bubble {
+  background: linear-gradient(135deg, var(--blue), var(--violet));
+  color: white;
+}
+
+
+/* ===== Prompt chips restore ===== */
+.prompt-chips button {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+}
+
+.prompt-chips button:hover {
+  background: #e0e7ff;
+}
+
+/* Dark mode */
+[data-theme="dark"] .prompt-chips button {
+  background: #020617;
+  color: #93c5fd;
+  border-color: #1e293b;
+}
+
+
+.chat-input-bar {
+  display: flex;
+  gap: .6rem;
+  margin-top: .9rem;
+}
+
+.chat-input-bar input {
+  flex: 1;
+  padding: .8rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-main);
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+@keyframes heroEnter {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  from { transform: translate(0,0); }
+  to { transform: translate(40px,-60px); }
+}
+
+
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="nav-links">
+    <a href="#hero">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#assistant">AI Assistant</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <button id="theme-toggle">🌙</button>
+</nav>
+
+
+</nav>
+
+<div class="bg-blobs">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+
+<!-- HERO -->
+<header id="hero">
+  <div class="hero-text">
+    <h1>Hi, I’m Harsh Purohit</h1>
+    <div class="badges">
+      <span>AI Engineer</span>
+      <span>Generative AI</span>
+      <span>LangChain</span>
+      <span>LangGraph</span>
+      <span>RAG Systems</span>
+      <span>FastAPI</span>
+    </div>
+    <p>
+      I design and build <strong>production-grade Generative AI systems</strong>,
+      focusing on LLM orchestration, retrieval-augmented generation, and scalable backend architectures.
+    </p>
+    <a href="assets/Harsh_Purohit_Resume.pdf" class="btn">Download Resume</a>
+  </div>
+  <div class="hero-photo">
+    <img src="assets/profile-pic.jpg" alt="Harsh Purohit" loading="lazy">
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about" class="reveal">
+  <h2>About Me</h2>
+
+  <p>
+    Hey, I’m <strong>Harsh</strong> — an AI & Backend Engineer building
+    <strong>production-grade Generative AI systems</strong> that deliver real value.
+  </p>
+
+  <p>
+    I specialize in designing and shipping
+    <strong>scalable AI features and intelligent workflows</strong>
+    using LLMs, RAG, LangChain, and robust backend services.
+    I’m currently <strong>serving my notice period with an offer in hand</strong>
+    and open to roles where I can contribute to impactful AI products immediately.
+  </p>
+
+  <p><strong>Some of the systems I’ve built:</strong></p>
+
+  <ul>
+    <li>
+      An <strong>AI movie-booking agent</strong> that interprets natural language
+      and completes bookings via structured workflows
+    </li>
+    <li>
+      A <strong>smart document retrieval system</strong> powered by OpenAI embeddings
+      and vector stores for efficient semantic search
+    </li>
+    <li>
+      An <strong>AI-enhanced image transformation tool</strong> using CLIPDrop APIs
+      with a React frontend
+    </li>
+  </ul>
+
+  <p>
+    My strength lies at the intersection of
+    <strong>AI logic, backend infrastructure, and production delivery</strong> —
+    from architecting LangChain agents to building scalable REST APIs with FastAPI,
+    MongoDB, cloud deployments, and CI/CD pipelines.
+  </p>
+
+  <p class="muted">
+    I enjoy shipping fast, experimenting often, and building GenAI tools that users
+    adopt and trust. My focus is on clean system design, explainable AI workflows,
+    and taking models from prototype to production.
+  </p>
+</section>
+
+
+<!-- SKILLS -->
+<section id="skills" class="reveal">
+  <h2>Skills & Technologies</h2>
+
+  <div class="skills-grid">
+
+    <!-- Generative AI -->
+    <div class="skill-card skill-visual">
+      <div class="skill-header">
+        <img src="assets/ai.png" alt="Generative AI">
+        <h3>Generative AI</h3>
+      </div>
+      <ul>
+        <li>LLMs: Claude, Mistral, GPT</li>
+        <li>Prompt Engineering & Guardrails</li>
+        <li>Retrieval Augmented Generation (RAG)</li>
+        <li>Agentic & multi-step workflows</li>
+      </ul>
+      <p class="skill-foot">Used across SmartDocX, VPC, AI Agents</p>
+    </div>
+
+    <!-- Frameworks -->
+    <div class="skill-card skill-visual">
+      <div class="skill-header">
+        <img src="assets/framework.jpg" alt="Frameworks">
+        <h3>Frameworks</h3>
+      </div>
+      <ul>
+        <li>LangChain – prompt & RAG orchestration</li>
+        <li>LangGraph – stateful agent workflows</li>
+        <li>FastAPI – async backend APIs</li>
+        <li>Pydantic – request & schema validation</li>
+      </ul>
+      <p class="skill-foot">Production APIs & orchestration layers</p>
+    </div>
+
+    <!-- Backend & Data -->
+    <div class="skill-card skill-visual">
+      <div class="skill-header">
+        <img src="assets/fastapi.png" alt="Backend">
+        <h3>Backend & Data</h3>
+      </div>
+      <ul>
+        <li>Python (primary language)</li>
+        <li>Async REST APIs</li>
+        <li>Vector Databases & embeddings</li>
+        <li>Semantic search pipelines</li>
+      </ul>
+      <p class="skill-foot">Low-latency, scalable services</p>
+    </div>
+
+    <!-- Cloud & DevOps -->
+    <div class="skill-card skill-visual">
+      <div class="skill-header">
+        <img src="assets/aws.png" alt="Cloud & DevOps">
+        <h3>Cloud & DevOps</h3>
+      </div>
+      <ul>
+        <li>AWS (Bedrock, ECS, VPC)</li>
+        <li>Dockerized deployments</li>
+        <li>CI/CD pipelines</li>
+      </ul>
+      <p class="skill-foot">Cloud-native & production-ready</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- AI ASSISTANT -->
+<section id="assistant" class="reveal">
+  <h2>AI Personal Assistant</h2>
+  <p class="muted">
+    Ask about my projects, skills, architecture decisions, or AI experience.
+    <br>
+    ⚠️ Powered by a local / self-hosted LLM — responses may take a few seconds.
+  </p>
+
+  <div class="assistant-card">
+    <div id="messages"></div>
+    <div id="typing-indicator" class="muted"></div>
+
+    <div class="chat-input-bar">
+      <input
+        id="question"
+        type="text"
+        placeholder="Ask me about VPC, LangChain, RAG, FastAPI…"
+      />
+      <button id="send-btn" class="btn">Send</button>
+    </div>
+    <div class="prompt-chips">
+    <button onclick="sendChip('Explain VPC architecture')">VPC Architecture</button>
+    <button onclick="sendChip('What tech stack is used?')">Tech Stack</button>
+    <button onclick="sendChip('How is LangGraph used?')">LangGraph Usage</button>
+    <button onclick="sendChip('Explain backend design')">Backend Design</button>
+  </div>
+
+  </div>
+</section>
+
+
+<!-- PROJECTS -->
+<section id="projects" class="reveal">
+  <h2>Projects</h2>
+
+  <div class="project-card">
+    <h3>VPC – Virtual Pain Clinic</h3>
+    <p>
+      AI-driven clinical intake and screening platform designed to assist patients
+      through structured medical questionnaires and intelligent routing.
+    </p>
+    <p class="muted">
+      Tech: LangGraph, LLM Agents, FastAPI, AWS, Clinical Decision Logic
+    </p>
+  </div>
+
+  <div class="project-card">
+    <h3>SmartDocX</h3>
+    <p>
+      Document intelligence system enabling users to query large document collections
+      using natural language with high relevance and low latency.
+    </p>
+    <p class="muted">
+      Tech: RAG, LangChain, Vector Databases, Embeddings, FastAPI
+    </p>
+  </div>
+
+  <div class="project-card">
+    <h3>NOVA – Movie Recommendation Engine</h3>
+    <p>
+      Personalized recommendation system combining collaborative filtering
+      with content-based semantic understanding.
+    </p>
+    <p class="muted">
+      Tech: Python, ML Pipelines, Embeddings, Ranking Logic
+    </p>
+  </div>
+
+  <div class="project-card">
+    <h3>VIZISmart – Voice-Enabled AI Assistant</h3>
+    <p>
+      Conversational AI assistant capable of voice input, contextual reasoning,
+      and task execution using LLMs.
+    </p>
+    <p class="muted">
+      Tech: Speech-to-Text, LLM Reasoning, Backend APIs
+    </p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="reveal">
+  <h2>Contact Me</h2>
+
+  <div class="contact-box">
+    <form action="mailto:er.harshpurohit@gmail.com" method="POST" enctype="text/plain">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" rows="4" placeholder="Your Message"></textarea>
+      <button class="btn" type="submit">Send Message</button>
+    </form>
+
+    <hr style="margin:1.5rem 0">
+
+    <div class="contact-links">
+      <a href="mailto:er.harshpurohit@gmail.com">📧 Email</a>
+      <a href="https://www.linkedin.com/in/harshpurohit13/" target="_blank">LinkedIn</a>
+      <a href="https://github.com/harshpurohit13" target="_blank">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Harsh Purohit · AI Engineer · Built with FastAPI & Generative AI</p>
+</footer>
+<script>
+const messagesEl = document.getElementById("messages");
+const typingEl = document.getElementById("typing-indicator");
+const inputEl = document.getElementById("question");
+const sendBtn = document.getElementById("send-btn");
+
+const API_URL =
+  location.port === "5500"
+    ? "http://127.0.0.1:8000/ask"
+    : "/ask";
+
+
+function addMessage(text, sender) {
+  const msg = document.createElement("div");
+  msg.className = "message " + sender;
+
+  const bubble = document.createElement("div");
+  bubble.className = "bubble";
+  bubble.textContent = text;
+
+  msg.appendChild(bubble);
+  messagesEl.appendChild(msg);
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+}
+
+function sendChip(text) {
+  document.getElementById("question").value = text;
+  sendMessage();
+}
+
+const revealEls = document.querySelectorAll(".reveal");
+
+const revealObserver = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  },
+  { threshold: 0.15 }
+);
+
+revealEls.forEach(el => revealObserver.observe(el));
+
+
+async function sendMessage() {
+  const q = inputEl.value.trim();
+  if (!q) return;
+
+  addMessage(q, "user");
+  inputEl.value = "";
+  sendBtn.disabled = true;
+  typingEl.textContent = "🤖 Thinking…";
+
+  try {
+    const res = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question: q })
+    });
+
+    const data = await res.json();
+    addMessage(data.answer || "No response received.", "bot");
+  } catch (e) {
+    addMessage("AI backend unavailable right now.", "bot");
+  } finally {
+    typingEl.textContent = "";
+    sendBtn.disabled = false;
+  }
+}
+
+sendBtn.onclick = sendMessage;
+
+inputEl.addEventListener("keydown", e => {
+  if (e.key === "Enter") sendMessage();
+});
+
+window.onload = () => {
+  addMessage(
+    "Hi 👋 I’m Harsh’s AI assistant. Ask me about his projects, GenAI work, or system design decisions.",
+    "bot"
+  );
+};
+
+const toggleBtn = document.getElementById("theme-toggle");
+const root = document.documentElement;
+
+// Load saved preference
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme) {
+  root.setAttribute("data-theme", savedTheme);
+  toggleBtn.textContent = savedTheme === "dark" ? "☀️" : "🌙";
+}
+
+toggleBtn.onclick = () => {
+  const current = root.getAttribute("data-theme");
+  const next = current === "dark" ? "light" : "dark";
+
+  root.setAttribute("data-theme", next);
+  localStorage.setItem("theme", next);
+  toggleBtn.textContent = next === "dark" ? "☀️" : "🌙";
+};
+
+</script>
+
+</body>
+</html>
